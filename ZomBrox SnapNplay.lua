@@ -248,7 +248,7 @@ local function log(msg)
     if LOG_FILE and LOG_FILE ~= "" then
         pcall(function()
             local f = io.open(LOG_FILE, "a+")
-            if f then f:write(line .. "\n") f:close() end
+            if f then f:write(line .. "\n"); f:close() end
         end)
     end
 end
@@ -320,9 +320,9 @@ local function getSwipeUser()
         local p2 = locTable[#locTable] or locTable[2]
         
         if p1 and p2 then
-            -- Extract coordinates using getX() and getY() methods
-            local x1, y1 = p1:getX(), p1:getY()
-            local x2, y2 = p2:getX(), p2:getY()
+            -- Extract coordinates from point objects (direct properties)
+            local x1, y1 = p1.x, p1.y
+            local x2, y2 = p2.x, p2.y
             
             toast(string.format("Swipe: (%d,%d) -> (%d,%d)", x1, y1, x2, y2))
             
