@@ -503,7 +503,7 @@ local function generateScript()
         "    if LOG_FILE and LOG_FILE ~= \"\" then",
         "        pcall(function()",
         "            local f2 = io.open(LOG_FILE, \"a+\")",
-        "            if f2 then f2:write(line .. \"\\n\") f2:close() end",
+        "            if f2 then f2:write(line .. \"\\n\"); f2:close() end",
         "        end)",
         "    end",
         "end",
